@@ -1,5 +1,5 @@
 const express = require('express');
-const { default: mongoose } = require('mongoose');
+const mongoose = require('mongoose');
 
 const userSchema = mongoose.Schema({
 
@@ -14,10 +14,20 @@ const userSchema = mongoose.Schema({
      password:{
         type:'string',
         required:[true,"password is required"]
-     }
+     },
+     blogs:[
+      {
+         type:mongoose.Types.ObjectId,
+         ref:'Blog'
+      }
+     ]
 
 },{timestamp:true});
 
-const userModel = mongoose.model('User',userSchema);
+
+//for error: Cannot overwrite `User` model once compiled.
+mongoose.models = {};
+
+const userModel = mongoose.model.User || mongoose.model('User',userSchema);
 
 module.exports = userModel;
