@@ -1,10 +1,22 @@
+import Header from "./components/Header";
 
-
+import {Routes , Route} from 'react-router-dom'
+import Login from "./pages/Login";
+import Blogs from "./pages/Blogs";
+import Register from "./pages/Register";
 function App() {
   return (
-    <div >
-      Blog App
-    </div>
+ <>  
+    <Header/>
+    <Routes >
+     
+     <Route path="/" element={<Blogs/>} />
+     <Route path="/blogs" element={<Blogs/>} />
+     <Route path="/login" element={<Login/>} />
+     <Route path="/register" element={<Register/>} />
+    </Routes>
+    </>
+
   );
 }
 
