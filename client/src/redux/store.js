@@ -18,7 +18,7 @@ const autoSlice = createSlice({
     }
 })
 
-export const authAction = autoSlice.actions;     //to deal with login and logout actions
+export const authActions = autoSlice.actions;     //to deal with login and logout actions
 
 export const store = configureStore({
     reducer: autoSlice.reducer,
