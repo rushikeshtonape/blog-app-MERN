@@ -27,7 +27,7 @@ const Blogs = () => {
   {blogs && blogs.length > 0 ? (
         <ul>
           {blogs.map(blog => (
-            // <li key={blog.id}>{blog.title}</li>
+            
             <BlogCard
             title={blog.title}
             description={blog.description}
@@ -41,7 +41,7 @@ const Blogs = () => {
       )}
  
   </div>
-    
+   
   )
 }
 

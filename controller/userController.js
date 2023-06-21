@@ -1,4 +1,4 @@
-const userModel = require('../models/userModel');
+const userModel = require('../models/usermodel')
 const bcrypt = require('bcrypt');
 //create user register
 exports.registerController = async(req,res)=>{
@@ -28,14 +28,15 @@ exports.registerController = async(req,res)=>{
          await user.save();
          return res.status(201).send({
             success:true,
-            message: 'new user created'
+            message: 'new user created',
+            user,
          })
     } catch (error) {
         // console.log(error);
         return res.status(500).send({
             message:"error In register  callback",
             sucess:false,
-            error
+            error,
         })
     }
 }
@@ -77,7 +78,7 @@ exports.loginController = async(req,res)=>{
         } 
         const user = await userModel.findOne({email});
         if(!user){
-            return res.status(201).send({
+            return res.status(200).send({
                 success:false,
                 message:'email is not registered'
             })
@@ -93,7 +94,8 @@ exports.loginController = async(req,res)=>{
 
         return res.status(200).send({
             success:true,
-            messsage: "Login Successfully"
+            messsage: "Login Successfully",
+            user
         })
     } catch (error) {
         console.log(error);

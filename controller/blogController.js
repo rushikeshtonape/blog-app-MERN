@@ -161,7 +161,8 @@ exports.getUserBlogController= async(req,res)=>{
 
         return res.status(200).send({
             success:true,
-            message:"user blogs"
+            message:"user blogs",
+            userBlog
         })
         
     } catch (error) {
