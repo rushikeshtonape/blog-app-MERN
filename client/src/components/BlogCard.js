@@ -31,7 +31,7 @@ export default function BlogCard({title,description,image,username,time}) {
         
         title={username}
         subheader={time}
-        
+
       />
       <CardMedia
         component="img"
@@ -40,8 +40,11 @@ export default function BlogCard({title,description,image,username,time}) {
         alt="unsuccessful to load image"
       />
       <CardContent>
+      <Typography variant="h6" color="text.secondary">
+          Title: {title}
+        </Typography>
         <Typography variant="body2" color="text.secondary">
-          {description}
+        Description: {description}
         </Typography>
       </CardContent>
       
