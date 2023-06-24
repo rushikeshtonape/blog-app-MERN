@@ -13,6 +13,7 @@ const BlogDetail = () => {
       const { data } = await axios.get(`/api/v1/blog/get-blog/${id}`);
       if (data?.success) {
         setBlog(data?.blog);
+        ///for getting infomation on input
         setInputs({
           title : data.blog.title,
           description : data.blog.description,
@@ -36,6 +37,7 @@ const BlogDetail = () => {
       [e.target.name]: e.target.value,
     }));
   };
+
   //form
   const handleSubmit = async (e) => {
     e.preventDefault();
