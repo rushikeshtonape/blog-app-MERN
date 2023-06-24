@@ -7,7 +7,7 @@ const Blogs = () => {
     //get all blogs 
   const getAllBlogs = async ()=>{
     try{
-    const {data} =  await axios.get('/api/v1/blog/all-blog')
+    const {data} =  await axios.get('/api/v1/blog/all-blog');
    
     if(data?.success){ 
      setBlogs(data?.blogs)
@@ -25,15 +25,19 @@ const Blogs = () => {
   return (<div> <h1>Blog List</h1>
   
   {blogs && blogs.length > 0 ? (
+   
         <ul>
           {blogs.map(blog => (
             
             <BlogCard
-            title={blog.title}
-            description={blog.description}
-            image={blog.image}
-            username={blog.user.username}
+            id={blog._id}
+            isUser={localStorage.getItem("userId") === blog?.user?._id}
+            title={blog?.title}
+            description={blog?.description}
+            image={blog?.image}
+            username={blog?.user?.username}
             time={blog.createdAt}/>
+           
           ))}
         </ul>
       ) : (
