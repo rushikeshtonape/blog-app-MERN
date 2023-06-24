@@ -16,6 +16,7 @@ import { IconButton } from '@mui/material';
 import {Box} from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { toast } from 'react-hot-toast';
 
 export default function BlogCard({title,description,image,username,time,id,isUser}) {
   const navigate = useNavigate()
@@ -28,8 +29,8 @@ export default function BlogCard({title,description,image,username,time,id,isUse
     try {
       const {data} = await axios.delete(`/api/v1/blog/delete-blog/${id}`);
       if(data?.success){
-        alert("data deleted successfully");
-        navigate('/my-blogs')
+        toast.success("Blog deleted");
+        window.location.reload();
       }
     } catch (error) {
       console.log(error);
@@ -38,17 +39,16 @@ export default function BlogCard({title,description,image,username,time,id,isUse
 
 
   return (
-    <Card sx={{ width:'40%' , margin:'auto' , mt:2 , padding:3 , boxShadow: '5px 5px 10px #ccc' }}>
+    <Card sx={{ width:'40%' , margin:'auto' , mt:2 , padding:3 , boxShadow:'0px 0px 0px 0.5px #606060', backgroundColor:'#F8F8F8' }}>
       {isUser && (
         <Box display={"flex"}>
           <IconButton onClick={handleEdit} sx={{marginLeft:"auto"}}>
-            <ModeEditIcon/>
+            <ModeEditIcon color='info'/>
           </IconButton>
           <IconButton onClick={handleDelete}>
-            <DeleteIcon/>
+            <DeleteIcon color='error'/>
           </IconButton>
         </Box>
-
       )}
       <CardHeader
         avatar={

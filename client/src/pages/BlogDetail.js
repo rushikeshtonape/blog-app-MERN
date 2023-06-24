@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import { Box, Button, InputLabel, TextField, Typography } from "@mui/material";
+import { toast } from 'react-hot-toast';
 const BlogDetail = () => {
    
   const [blog, setBlog] = useState({});
@@ -49,8 +50,9 @@ const BlogDetail = () => {
         user: id,
       });
       if (data?.success) {
-        alert("Blog Updated");
+        toast.success("Blog Updated");
         navigate("/my-blogs");
+        
       }
     } catch (error) {
       console.log(error);
