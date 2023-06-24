@@ -15,6 +15,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { IconButton } from '@mui/material';
 import {Box} from '@mui/material';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 export default function BlogCard({title,description,image,username,time,id,isUser}) {
   const navigate = useNavigate()
@@ -22,6 +23,18 @@ export default function BlogCard({title,description,image,username,time,id,isUse
     navigate(`/blog-detail/${id}`)
     
   }
+
+  const handleDelete =async()=>{
+    try {
+      const {data} = await axios.delete(`/api/v1/blog/delete-blog/${id}`);
+      if(data?.success){
+        alert("data deleted successfully");
+        navigate('/my-blogs')
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  } 
 
 
   return (
@@ -31,7 +44,7 @@ export default function BlogCard({title,description,image,username,time,id,isUse
           <IconButton onClick={handleEdit} sx={{marginLeft:"auto"}}>
             <ModeEditIcon/>
           </IconButton>
-          <IconButton>
+          <IconButton onClick={handleDelete}>
             <DeleteIcon/>
           </IconButton>
         </Box>

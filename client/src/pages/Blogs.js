@@ -30,7 +30,7 @@ const Blogs = () => {
           {blogs.map(blog => (
             
             <BlogCard
-            id={blog._id}
+            id={blog?._id}
             isUser={localStorage.getItem("userId") === blog?.user?._id}
             title={blog?.title}
             description={blog?.description}
