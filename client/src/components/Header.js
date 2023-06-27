@@ -25,7 +25,7 @@ const Header = () => {
     <>
     <AppBar position='sticky'>
         <Toolbar>
-            <Typography varient='h4'>My Blog App</Typography>
+            <Typography varient='h1' sx={{fontSize:'30px' , color: "#000" , fontWeight: '500'}}>BLoGGeR</Typography>
             {isLogin && (
               <Box display={'flex'} margin={'auto'}>
               <Tabs textColor='inherit' value={value} onChange={(e,val) => setValue(val)}>
